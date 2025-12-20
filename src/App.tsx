@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDebounce } from "react-use";
 import MovieCard from "./components/MovieCard";
 import Search from "./components/Search";
 import Loading from "./components/ui/Loading";
@@ -7,15 +8,20 @@ import { API_OPTIONS, BASE_API_URL, type MovieInterface } from "./constants";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [movies, setMovies] = useState<MovieInterface[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function fetchMovies() {
+  useDebounce(() => setDebouncedSearchQuery(searchQuery), 1000, [searchQuery]);
+
+  async function fetchMovies(query: string) {
     setIsLoading(true);
     setErrorMsg("");
     try {
-      const endpoint = `${BASE_API_URL}/discover/movie?sort_by=popularity.desc`;
+      const endpoint = query
+        ? `${BASE_API_URL}/search/movie?query=${encodeURI(query)}`
+        : `${BASE_API_URL}/discover/movie?sort_by=popularity.desc`;
       const response = await fetch(endpoint, API_OPTIONS);
       if (!response.ok) {
         throw new Error("Failed to fetch movies");
@@ -38,8 +44,8 @@ function App() {
   }
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    fetchMovies(debouncedSearchQuery);
+  }, [debouncedSearchQuery]);
 
   return (
     <main>
