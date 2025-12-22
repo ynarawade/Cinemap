@@ -25,6 +25,22 @@ export interface MovieInterface {
   vote_count: number;
 }
 
+export interface TvShowInterface {
+  adult: boolean;
+  backdrop_path: string;
+  first_air_date: string;
+  id: number;
+  original_language: string;
+  original_name: string;
+  name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
 // adult: false;
 // backdrop_path: "/ufqytAlziHq5pljKByGJ8IKhtEZ.jpg";
 // genre_ids: (3)[(53, 80, 9648)];

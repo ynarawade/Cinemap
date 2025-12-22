@@ -72,7 +72,7 @@
   }
 
   .wrapper {
-    @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
+    @apply px-5 py-12 xs:p-10 max-w-7xl  lg:max-w-4/5 mx-auto flex flex-col relative z-10;
   }
 
   /* Trending Section */
@@ -124,39 +124,41 @@
     }
   }
 
-  /* Movie Card */
+  /* Movie Card — clean & simple */
   .movie-card {
-    @apply bg-dark-100 p-5 rounded-2xl
-           shadow-inner shadow-black/40
-           transition-transform duration-300 hover:-translate-y-1;
+    @apply bg-dark-100 p-5 rounded-2xl min-w-3xs
+         shadow-inner shadow-black/40
+         transition-transform duration-300
+         hover:-translate-y-1 hover:border border-accent-200;
 
     & img {
-      @apply rounded-xl h-auto  w-full;
+      @apply rounded-lg w-full aspect-2/3 object-cover;
     }
 
     & h3 {
-      @apply text-light-100 font-bold text-base line-clamp-1;
+      @apply mt-3 text-light-100 font-semibold
+           text-[15px] leading-snug line-clamp-1;
     }
 
     & .content {
-      @apply mt-2 flex flex-row items-center flex-wrap gap-2;
+      @apply mt-2 flex items-center gap-2;
     }
 
     & .rating {
-      @apply flex flex-row items-center gap-1;
+      @apply flex items-center gap-1;
     }
 
     & .rating p {
-      @apply font-bold text-base text-accent-200;
+      @apply text-sm font-medium text-accent-200;
     }
 
     & .content span {
-      @apply text-sm text-gray-100;
+      @apply text-xs text-gray-100;
     }
 
     & .content .lang,
     & .content .year {
-      @apply capitalize text-neutral-400 font-medium text-base;
+      @apply text-xs text-neutral-400;
     }
   }
 }
@@ -181,6 +183,16 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@utility scrollbar-hide {
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE and Edge */
+  -ms-overflow-style: none;
+  /* Chrome, Safari, and Opera */
   &::-webkit-scrollbar {
     display: none;
   }

@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import type { MovieInterface } from "../constants";
+import type { MovieInterface } from "../../constants";
 
 interface MovieCardProps {
   movie: MovieInterface;
