@@ -10,6 +10,7 @@ function MovieCard({ movie }: MovieCardProps) {
     <div className="movie-card">
       <img
         alt={movie.title}
+        loading="lazy"
         src={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`

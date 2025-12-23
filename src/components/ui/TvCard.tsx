@@ -10,6 +10,7 @@ function TvCard({ show }: TvCardProps) {
     <div className="movie-card">
       <img
         alt={show.name}
+        loading="lazy"
         src={
           show.poster_path
             ? `https://image.tmdb.org/t/p/w500/${show.poster_path}`
