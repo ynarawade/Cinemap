@@ -7,7 +7,7 @@ interface HorizontalRailProps<T> {
 }
 
 function HorizontalRail<T>({ data, renderItem }: HorizontalRailProps<T>) {
-  const ITEM_WIDTH = 256;
+  const ITEM_WIDTH = 260;
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   function scrollLeft() {
@@ -30,7 +30,11 @@ function HorizontalRail<T>({ data, renderItem }: HorizontalRailProps<T>) {
         ref={containerRef}
         className="flex space-x-3 overflow-x-auto scrollbar-hide p-3"
       >
-        {data.map((data) => renderItem(data))}
+        {data.map((item, index) => (
+          <div key={index} className="min-w-65">
+            {renderItem(item)}
+          </div>
+        ))}
       </div>
 
       {/* Left Arrow */}

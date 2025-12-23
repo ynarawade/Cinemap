@@ -41,7 +41,7 @@ function Movies() {
 
   return (
     <div className="space-y-7">
-      <ShowSectionHeading routePath="/browse/movies" title="Popular Movies" />
+      <ShowSectionHeading routePath="movies" title="Popular Movies" />
       {loading ? (
         <Loading />
       ) : errorMessage ? (
