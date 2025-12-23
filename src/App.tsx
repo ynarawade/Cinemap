@@ -1,5 +1,6 @@
 import Movies from "./components/Movies";
 import TvShows from "./components/TvShows";
+
 import StackedHeroBanner from "./components/ui/StackedHeroBanner";
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </h1>
         {/* <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} /> */}
       </header>
+
       <section>
         <TvShows />
       </section>

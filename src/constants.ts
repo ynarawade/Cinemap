@@ -7,6 +7,11 @@ export const API_OPTIONS = {
     Authorization: `Bearer ${TMDB_ACCESS_TOKEN}`,
   },
 };
+export const INTERSECTION_OBSERVER_API_OPTIONS = {
+  root: null,
+  rootMargin: "200px",
+  threshold: 0,
+};
 
 export interface MovieInterface {
   adult: boolean;

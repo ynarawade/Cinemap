@@ -1,12 +1,13 @@
 import type { TvShowInterface } from "../constants";
-import useFetchData from "../hooks/useFetchData";
+
+import useInfiniteFetchData from "../hooks/useInfiniteFetchData";
 import HorizontalRail from "./ui/HorizontalRail";
-import Loading from "./ui/Loading";
+import SkeletonCard from "./ui/ShimmerLoader";
 import ShowSectionHeading from "./ui/ShowSectionHeading";
 import TvCard from "./ui/TvCard";
 
 function TvShows() {
-  const { data, loading, errorMessage } = useFetchData<TvShowInterface>(
+  const { data, loading, errorMessage } = useInfiniteFetchData<TvShowInterface>(
     "discover/tv?sort_by=popularity.desc"
   );
 
@@ -14,7 +15,10 @@ function TvShows() {
     <div className="space-y-7">
       <ShowSectionHeading routePath="tv" title="TV Shows" />
       {loading ? (
-        <Loading />
+        <HorizontalRail
+          data={Array.from({ length: 8 })}
+          renderItem={() => <SkeletonCard />}
+        />
       ) : errorMessage ? (
         <p>{errorMessage}</p>
       ) : (

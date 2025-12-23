@@ -23,9 +23,18 @@ export default function useInfiniteFetchData<T>(url: string) {
         return;
       }
 
-      console.log(data);
+      // console.log(data);
 
-      setData((prev) => [...prev, ...data.results]);
+      setData((prev) => {
+        const combined = [...prev, ...data.results];
+
+        const unique = Array.from(
+          new Map(combined.map((item: any) => [item.id, item])).values()
+        );
+
+        return unique;
+      });
+
       if (page >= data.total_pages) {
         setHasMore(false);
       }
